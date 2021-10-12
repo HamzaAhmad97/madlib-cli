@@ -61,10 +61,13 @@ def parse_template(text):
         The text with the keywords removed
     tuple
         A tuple containing the exctracted keywords
+    None
+        If no matches in the string
     """
     regex = r"(\{[^{}]+\})"
-    parts = tuple(map(lambda itm: itm.strip("{}"), re.findall(regex, text)))
     stripped = re.sub(regex, "{}", text)
+    parts = tuple(map(lambda itm: itm.strip("{}"), re.findall(regex, text))) if len(re.findall(regex, text)) else None
+    
     return (stripped, parts)
 
 
