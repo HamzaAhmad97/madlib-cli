@@ -1,6 +1,6 @@
 from madlib_cli import __version__
 import pytest
-from madlib import read_template, parse_template, merge
+from madlib import read_template, parse_template, merge, wrtie_response
 
 def test_version():
     assert __version__ == '0.1.0'
@@ -36,3 +36,12 @@ def test_read_template_raises_exception_with_bad_path():
     with pytest.raises(FileNotFoundError):
         path = "missing.txt"
         read_template(path)
+
+
+def test_write_response_writes_result_to_response_file():
+    wrtie_response("It was a dark and stormy night.")
+    with open('assets/response.txt') as f:
+        actual = f.read()
+    expected = "It was a dark and stormy night."
+    print(actual)
+    assert actual == expected
