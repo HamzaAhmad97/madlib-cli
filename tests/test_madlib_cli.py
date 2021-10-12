@@ -1,6 +1,6 @@
 from madlib_cli import __version__
 import pytest
-from madlib import read_template, parse_template, merge, wrtie_response
+from madlib_cli.madlib import read_template, parse_template, merge, wrtie_response
 
 
 def test_version():
