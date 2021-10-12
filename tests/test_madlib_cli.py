@@ -2,8 +2,10 @@ from madlib_cli import __version__
 import pytest
 from madlib import read_template, parse_template, merge, wrtie_response
 
+
 def test_version():
-    assert __version__ == '0.1.0'
+    assert __version__ == "0.1.0"
+
 
 def test_read_template_returns_stripped_string():
     actual = read_template("assets/dark_and_stormy_night_template.txt")
@@ -11,7 +13,7 @@ def test_read_template_returns_stripped_string():
     assert actual == expected
 
 
-#@pytest.mark.skip("pending")
+# @pytest.mark.skip("pending")
 def test_parse_template():
     actual_stripped, actual_parts = parse_template(
         "It was a {Adjective} and {Adjective} {Noun}."
@@ -23,7 +25,7 @@ def test_parse_template():
     assert actual_parts == expected_parts
 
 
-#@pytest.mark.skip("pending")
+# @pytest.mark.skip("pending")
 def test_merge():
     actual = merge("It was a {} and {} {}.", ("dark", "stormy", "night"))
     expected = "It was a dark and stormy night."
@@ -40,8 +42,10 @@ def test_read_template_raises_exception_with_bad_path():
 
 def test_write_response_writes_result_to_response_file():
     wrtie_response("It was a dark and stormy night.")
-    with open('assets/response.txt') as f:
+    with open("assets/response.txt") as f:
         actual = f.read()
     expected = "It was a dark and stormy night."
     print(actual)
     assert actual == expected
+
+
