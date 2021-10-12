@@ -127,10 +127,14 @@ def get_parts(parts):
         This function returns a tuple of inputs (strings)
     """
     entered = []
-    for part in parts:
-        resp = input(f"{part} ==>  ")
-        entered.append(resp)
-    return tuple(entered)
+    try:
+        for part in parts:
+            resp = input(f"{part} ==>  ")
+            entered.append(resp)
+    except:
+        pass
+    finally:
+        return tuple(entered)
 
 
 if __name__ == "__main__":
@@ -140,4 +144,4 @@ if __name__ == "__main__":
     stripped, parts = parse_template(story)
     entered = get_parts(parts)
     response = merge(stripped, entered)
-    wrtie_response(response, pth)
+    wrtie_response(response, 'assets/response.txt')
